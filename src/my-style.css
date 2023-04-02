@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 5vh;
+    background: #000000;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 5vh;
+    border: 2px solid #ffffff;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #696969;
+  }
+}
+
+input::placeholder {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.lty-playbtn {
+  @apply w-3
+}
+
+.yt-lite {
+  @apply absolute top-0 left-0 right-0 z-50 w-full h-[60%]
+}
+
+@media (max-width: 640px) {
+  .yt-lite {
+    @apply h-[40%]
+  }
+}
+
+.card-container {
+  @apply overflow-hidden bg-gray-900 text-white rounded-t-md cursor-pointer
+}
+
+.img-holder {
+  @apply relative
+}
+
+.img-overlay {
+  @apply absolute bg-black h-full w-full opacity-0
+}
+
+.genre-overview {
+  @apply absolute p-2 text-xs top-10 xl:top-20 xl:text-base lg:top-16 lg:text-base md:top-10 md:text-sm sm:text-sm opacity-0
+}
+
+.card-container:hover .img-holder .img-overlay {
+  @apply opacity-50 duration-500 delay-300
+}
+
+.card-container:hover .genre-overview {
+  @apply opacity-100 duration-500 delay-300
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* new styles added */
+.swiper-button {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  cursor: pointer;
+}
+.swiper-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.image-swiper-button-prev {
+  left: 5px;
+}
+.image-swiper-button-next {
+  right: 5px;
+}
+.swiper-button-disabled {
+  opacity: 0.5;
+}
