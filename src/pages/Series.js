@@ -155,7 +155,7 @@ const Series = () => {
           </div>
           <div
             className='gap-8 grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 justify-items-center pt-8'>
-            {series.map((serie, index) => (
+            {series.map((serie) => (
               <SeriesList
                 key={serie.id}
                 serie={serie}
