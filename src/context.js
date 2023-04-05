@@ -4,16 +4,14 @@ import axios from "axios";
 const MovieContext = createContext()
 
 export const useMovieContext = () => {
+  const context = useContext(MovieContext)
   const API_KEY = "d93f293c631356c7f9ba99fd0002dcc5"
-
   const DEFAULT_API = "https://api.themoviedb.org/3/"
   const DISCOVER_MOVIE_API = DEFAULT_API + "discover/movie"
   const DISCOVER_SERIES_API = DEFAULT_API + "discover/tv"
   const TRENDING_MOVIE_API = DEFAULT_API + "trending/movie/day"
   const SEARCH_MOVIE = DEFAULT_API + "search/movie"
   const SEARCH_TV = DEFAULT_API + "search/tv"
-
-  const context = useContext(MovieContext)
   const [movies, setMovies] = context.movies
   const [series, setSeries] = context.series
   const [trendingMovies, setTrendingMovies] = context.trendingMovies
@@ -96,7 +94,6 @@ export const useMovieContext = () => {
     })
     setTrendingMovies(data.results)
   }
-
 
   // Select Movies
   const fetchSelectMovie = async (id) => {

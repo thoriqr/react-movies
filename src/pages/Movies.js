@@ -1,6 +1,5 @@
 import React, { useEffect, useRef} from 'react'
 import { useMovieContext } from '../context'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -8,11 +7,8 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
-
 import MoviesList from '../components/MoviesContent/MoviesList'
 import Pagination from '../components/MoviesContent/Pagination'
-
 
 const Movies = () => {
   const {
@@ -49,7 +45,6 @@ const Movies = () => {
     setMovieGenreName(name);
     setSelectedGenreId(name);
     handleScroll()
-    // Reset page
     setCurrentPage(1)
   };
 
@@ -64,10 +59,8 @@ const Movies = () => {
     .map((_, i) => new Date().getFullYear() - i);
 
   const handleYearChange = (e) => {
-    // Ambil tahun dari <select>
     setYear(e.target.value)
     handleScroll()
-    // Reset page
     setCurrentPage(1)
   }
 
@@ -89,7 +82,6 @@ const Movies = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Find the first non-whitespace character
     const firstNonWhitespaceIndex = searchKey.search(/\S/);
     let capitalizedSearchKey;
     if (firstNonWhitespaceIndex === -1 || !/[a-zA-Z]/.test(searchKey[firstNonWhitespaceIndex])) {
@@ -129,7 +121,6 @@ const Movies = () => {
               <div>Search</div>
             </button>
           </div>
-
         </form>
       </div>
       {movies.length ? <>
@@ -165,14 +156,12 @@ const Movies = () => {
               ))}
             </select>
           </div>
-
           <div
             className='gap-8 grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-3 justify-items-center pt-8'>
             {movies.map((movie, index) => (
               <MoviesList
                 key={movie.id}
                 movie={movie}
-                
               />
             ))}
           </div>
@@ -182,7 +171,7 @@ const Movies = () => {
         </div>
       </> :
         <div className='h-[80vh] flex justify-center items-center gap-3'>
-          <p className='text-2xl'>Sorry No Movies Found</p>
+          <p className='text-lg xl:text-2xl lg:text-2xl md:text-2xl'>Sorry No Movies Found</p>
         </div>}
     </div>
   )

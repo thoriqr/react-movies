@@ -9,15 +9,13 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-
-
 import TrendingSwipe from '../components/HomeContent/TrendingSwipe'
 import PopularMovies from '../components/HomeContent/PopularMovies'
 import PopularSeries from '../components/HomeContent/PopularSeries'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-  const { fetchMovies, fetchSeries, fetchTrendingMovies, trendingMovies, movies, series,  } = useMovieContext()
+  const { fetchMovies, fetchSeries, fetchTrendingMovies, trendingMovies, movies, series, } = useMovieContext()
 
   useEffect(() => {
     fetchMovies()
@@ -27,7 +25,6 @@ const Home = () => {
   }, [])
 
   const navigate = useNavigate()
-
 
   return (
     <div className='bg-gray-900 text-white '>
@@ -42,13 +39,12 @@ const Home = () => {
           className='disabled-slide'
           modules={[Navigation, EffectFade, Autoplay]}
           effect='fade'
-          // autoplay={{ delay: 15000 }}
+          autoplay={{ delay: 15000 }}
           navigation={{
             nextEl: '.image-swiper-button-next',
             prevEl: '.image-swiper-button-prev',
             disabledClass: 'swiper-button-disabled'
           }}
-          autoplay={{ delay: 15000000 }}
           speed={800}
           slidesPerView={1}
           loop
@@ -68,9 +64,8 @@ const Home = () => {
         </Swiper>
       </div>
 
-
       <div className='pl-4 pt-6 pb-8'>
-        <div className='pt-6 pb-4 font-semibold text-2xl'>Popular Movies</div>
+        <div className='pt-6 pb-4 font-semibold text-lg xl:text-2xl lg:text-2xl md:text-2xl'>Popular Movies</div>
         <div className='scrollbar flex flex-nowrap gap-2 overflow-x-auto pb-4'>
           {movies.slice(0, 12).map((movie) => (
             <PopularMovies
@@ -79,15 +74,14 @@ const Home = () => {
             />
           ))}
           <div className='flex items-center px-12 '>
-            <button onClick={() => navigate('/movies')} className='flex items-center gap-1  '>
+            <button onClick={() => navigate('/movies')} className='flex text-sm xl:text-lg lg:text-lg items-center gap-1 text-white hover:text-gray-300'>
               <span>View</span>
               <span>More</span>
               <FontAwesomeIcon icon={faArrowRight} />
             </button>
           </div>
         </div>
-
-        <div className='pt-6 pb-4 font-semibold text-2xl'>Popular Series</div>
+        <div className='pt-6 pb-4 font-semibold text-lg xl:text-2xl lg:text-2xl md:text-2xl'>Popular Series</div>
         <div className='scrollbar flex flex-nowrap gap-2 overflow-x-auto pb-4'>
           {series.slice(0, 12).map((serie) => (
             <PopularSeries
@@ -96,7 +90,7 @@ const Home = () => {
             />
           ))}
           <div className='flex items-center px-12 '>
-            <button onClick={() => navigate('/series')} className='flex items-center gap-1  '>
+            <button onClick={() => navigate('/series')} className='flex text-sm xl:text-lg lg:text-lg items-center gap-1 text-white hover:text-gray-300'>
               <span>View</span>
               <span>More</span>
               <FontAwesomeIcon icon={faArrowRight} />
@@ -104,7 +98,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

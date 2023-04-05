@@ -6,7 +6,6 @@ const TrendingSwipe = ({ trendingMovie,  }) => {
 
   const [overviewLength, setOverviewLength] = useState(150)
 
-  // Resize responsive swiper
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;

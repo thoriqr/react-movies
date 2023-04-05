@@ -5,7 +5,6 @@ import App from './App';
 import { MovieProvider } from './context';
 import './my-style.css'
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

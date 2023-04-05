@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useMovieContext } from '../../context'
-
 import ModalMovie from '../ModalMovie'
 import MoviePlaceHolder from '../../img/img-placeholder.png'
 
@@ -43,7 +42,6 @@ const MoviesList = ({ movie }) => {
     }
   };
 
-  // potong judul movie jika lebih 22 karakter
   const getTitle = () => {
     if (movie.title.length >= 22) {
       return movie.title.substring(0, 22) + "..."
@@ -90,7 +88,7 @@ const MoviesList = ({ movie }) => {
             </div>
           </div>
         </div>
-        <div className='text-center py-1 text-xs xl:text-base lg:text-base border-b border-white'>
+        <div className='text-center py-1 text-xs xl:text-base lg:text-base text-white'>
           <div className='font-semibold'>{getTitle()}</div>
           <div className='font-semibold'>{movie.release_date ? `(${movie.release_date.slice(0, 4)})` : ""}</div>
         </div>

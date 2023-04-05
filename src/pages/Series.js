@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { useMovieContext } from '../context'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -17,12 +16,10 @@ const Series = () => {
 
   const scrollHere = useRef(null)
 
-
   useEffect(() => {
     fetchSeries()
     // eslint-disable-next-line
   }, [genreId, year])
-
 
   const genreClickChange = (e) => {
     const name = e.target.innerText.replace(',', '');
@@ -45,7 +42,6 @@ const Series = () => {
     setSerieGenreName(name);
     setSelectedGenreId(name);
     handleScroll()
-    // Reset page
     setCurrentPage(1)
   };
 
@@ -60,10 +56,8 @@ const Series = () => {
     .map((_, i) => new Date().getFullYear() - i);
 
   const handleYearChange = (e) => {
-    // Ambil tahun dari <select>
     setYear(e.target.value)
     handleScroll()
-    // Reset page
     setCurrentPage(1)
   }
 
@@ -85,7 +79,6 @@ const Series = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Find the first non-whitespace character
     const firstNonWhitespaceIndex = searchKey.search(/\S/);
     let capitalizedSearchKey;
     if (firstNonWhitespaceIndex === -1 || !/[a-zA-Z]/.test(searchKey[firstNonWhitespaceIndex])) {
@@ -105,9 +98,7 @@ const Series = () => {
   const handleScroll = () => scrollHere.current.scrollIntoView({ behavior: 'smooth' })
 
   return (
-    <div className='bg-gray-900  text-white '>
-
-
+    <div className='bg-gray-900 text-white '>
       <div ref={scrollHere} className='pt-3'></div>
       <div className='sticky top-12 z-30 pt-4 px-8 '>
         <form onSubmit={handleSearchSubmit}>
@@ -177,7 +168,7 @@ const Series = () => {
         </div>
       </> :
         <div className='h-[80vh] flex justify-center items-center gap-3'>
-          <p className='text-2xl'>Sorry No Series Found</p>
+          <p className='text-lg xl:text-2xl lg:text-2xl md:text-2xl'>Sorry No Series Found</p>
         </div>}
     </div>
   )

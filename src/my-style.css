@@ -48,7 +48,7 @@ input::placeholder {
 }
 
 .card-container {
-  @apply overflow-hidden bg-gray-900 text-white rounded-t-md cursor-pointer
+  @apply overflow-hidden bg-gray-900 text-white rounded-t-md cursor-pointer 
 }
 
 .img-holder {
@@ -78,7 +78,7 @@ input::placeholder {
   object-fit: cover;
 }
 
-/* new styles added */
+/* custom swiper navigation style*/
 .swiper-button {
   position: absolute;
   top: 50%;

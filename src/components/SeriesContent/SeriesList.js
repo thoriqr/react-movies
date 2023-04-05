@@ -43,7 +43,6 @@ const SeriesContent = ({ serie }) => {
     }
   };
 
-  // potong judul movie jika lebih 22 karakter
   const getTitle = () => {
     if (serie.name.length >= 22) {
       return serie.name.substring(0, 22) + "..."
@@ -90,7 +89,7 @@ const SeriesContent = ({ serie }) => {
             </div>
           </div>
         </div>
-        <div className='text-center py-1 text-xs xl:text-base lg:text-base border-b border-white'>
+        <div className='text-center py-1 text-xs xl:text-base lg:text-base'>
           <div className='font-semibold'>{getTitle()}</div>
           <div className='font-semibold'>{serie.first_air_date ? `(${serie.first_air_date.slice(0, 4)})` : ""}</div>
         </div>

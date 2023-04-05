@@ -1,7 +1,6 @@
 import React from 'react'
 import { useMovieContext } from '../context';
 import { useNavigate } from 'react-router-dom';
-
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,7 +12,6 @@ import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons'
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { faImdb } from '@fortawesome/free-brands-svg-icons'
-
 import MoviePlaceHolder from '../img/img-placeholder.png'
 import ProfilePlaceHolder from '../img/no-profile.png'
 
@@ -29,7 +27,6 @@ const ModalMovie = () => {
     setMovieGenreName(name);
     setYear(undefined)
     setSearchKey('')
-
     window.scrollTo(0,0)
     navigate('/movies', { state: { genreId: genreId } });
   };
@@ -51,9 +48,7 @@ const ModalMovie = () => {
     selected && setSelectedId(selected.id);
   };
 
-
   return (
-
     <div onClick={() => {
       setShowModalMovie(false);
       setPlaying(false)
@@ -65,7 +60,11 @@ const ModalMovie = () => {
           <div className='absolute -z-10 '>
             <img className='bg-center bg-cover opacity-0 xl:opacity-20 lg:opacity-20 md:opacity-20'
               alt={selectMovie.title}
-              src={`https://image.tmdb.org/t/p/w1280${selectMovie.backdrop_path}`} />
+              src={`https://image.tmdb.org/t/p/w1280${selectMovie.backdrop_path}`}
+              onError={(e) => {
+                e.target.src = null;
+              }}
+              />
             <div className='gradient'></div>
           </div>
           <button onClick={() => setShowModalMovie(false)} className='absolute top-1 right-3 text-white text-2xl' title='Close'>
@@ -90,7 +89,6 @@ const ModalMovie = () => {
                   <button
                     className='text-white hover:text-gray-300'
                     key={genre.id}
-
                     onClick={(e) => {
                       handleSelectGenre(e);
                       genreClick(e)
@@ -188,7 +186,6 @@ const ModalMovie = () => {
         </div>
       </div>
     </div>
-
   )
 }
 

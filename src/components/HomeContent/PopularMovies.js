@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useMovieContext } from '../../context'
 import ModalMovie from '../ModalMovie';
 
-const PopularMovies = ({ movie, }) => {
+const PopularMovies = ({ movie }) => {
   const { handleSelectMovie, showModalMovie, setShowModalMovie } = useMovieContext()
+
+  useEffect(() => {
+    if (showModalMovie) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [showModalMovie])
 
   const getTitle = (title) => {
     if (title.length >= 22) {
@@ -20,16 +28,16 @@ const PopularMovies = ({ movie, }) => {
   return (
     <>
       <div
-      onClick={() => { setShowModalMovie(true); handleSelectMovie(movie) }}
-      className='flex-none cursor-pointer'>
+        onClick={() => { setShowModalMovie(true); handleSelectMovie(movie) }}
+        className='flex-none cursor-pointer'>
         <img src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
         <div className='text-center py-1 text-xs xl:text-base lg:text-base '>
           <Title title={movie.title} />
           <div className='font-semibold'>{movie.release_date ? `(${movie.release_date.slice(0, 4)})` : ""}</div>
         </div>
-      </div>   
+      </div>
       {showModalMovie && (
-        <ModalMovie/>
+        <ModalMovie />
       )}
     </>
 

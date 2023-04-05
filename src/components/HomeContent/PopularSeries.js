@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useMovieContext } from '../../context'
 import ModalSerie from '../ModalSerie';
 
-const PopularSeries = ({ serie, }) => {
+const PopularSeries = ({ serie }) => {
   const { handleSelectSerie, showModalSerie, setShowModalSerie } = useMovieContext()
+
+  useEffect(() => {
+    if (showModalSerie) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [showModalSerie])
 
   const getTitle = (name) => {
     if (name.length >= 22) {
